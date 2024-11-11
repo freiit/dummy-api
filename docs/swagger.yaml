@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Hello World API
+  description: A minimal OpenAPI example
+  version: '1.0.0'
+
+servers:
+  - url: 'https://api.example.com/v1'
+    description: Production server
+
+paths:
+  /hello:
+    get:
+      summary: Get a greeting
+      description: Returns a friendly greeting message
+      parameters:
+        - name: name
+          in: query
+          description: Name of the person to greet
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Hello, World!"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
